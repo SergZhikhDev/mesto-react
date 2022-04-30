@@ -1,15 +1,36 @@
-function PopupWithForm(props) {
-  const { children, title, name,isOpen, onClose } = props;
+function PopupWithForm({ children, title, name, btnText, isOpen, onClose }) {
+  // const { children, title, name, btnText, isOpen, onClose } = props;
   return (
-    <div className={`popup  ${isOpen && 'popup_opened'} popup_type_${name}`} name="popupEditProfile">
+    <div
+      className={`popup  ${isOpen && "popup_opened"} popup_type_${name}`}
+      name="popupEditProfile"
+    >
       <div className="popup__container">
-        <button type="reset"
-         className="popup__close"
-         onClick = {onClose}
+        <button
+          type="reset"
+          className="popup__close"
+          onClick={onClose}
         ></button>
         <h3 className="popup__heading">{`${title}`}</h3>
         <form name={`${name}`} className={`form form_type_${name}`} noValidate>
           {children}
+
+          <fieldset className="form__handlers">
+            <button
+              type="submit"
+              name="sBtnAvatarUpdate"
+              className="form__button form__button_avatar-update"
+            >
+              {`${btnText}`}
+            </button>
+            <button
+              type="button"
+              name="sBtnEditBlock"
+              className="form__button form__button-dont-worry "
+            >
+              Сохранение ...
+            </button>
+          </fieldset>
         </form>
       </div>
     </div>

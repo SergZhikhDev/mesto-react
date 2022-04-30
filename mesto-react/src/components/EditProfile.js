@@ -31,7 +31,7 @@ function EditProfile() {
         <span className="popup__error" id="error-about-self"></span>
       </fieldset>
 
-      <fieldset className="form__handlers">
+      {/* <fieldset className="form__handlers">
         <button
           type="submit"
           name="sBtnEditBlock"
@@ -46,7 +46,7 @@ function EditProfile() {
         >
           Сохранение ...
         </button>
-      </fieldset>
+      </fieldset> */}
     </>
   );
 }

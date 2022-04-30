@@ -37,7 +37,7 @@ function App() {
     setIsAvatarUpdateOpen(false);
     setIsEditProfileOpen(false);
     setIsCardPopupOpen(false);
-    setSelectedCard(false);
+    setSelectedCard({ isOpen: false });
   }
 
   return (
@@ -55,6 +55,7 @@ function App() {
         <PopupWithForm
           name="avatar-update"
           title="Обновить аватар"
+          btnText="Сохранить"
           isOpen={isAvatarUpdateOpen}
           onClose={closeAllPopups}
         >
@@ -64,6 +65,7 @@ function App() {
         <PopupWithForm
           name="edit-profile"
           title="Редактировать профиль"
+          btnText=" Сохранить"
           isOpen={isEditProfileOpen}
           onClose={closeAllPopups}
         >
@@ -73,6 +75,7 @@ function App() {
         <PopupWithForm
           name="cardPopup"
           title="Новое место"
+          btnText=" Создать"
           isOpen={isCardPopupOpen}
           onClose={closeAllPopups}
         >

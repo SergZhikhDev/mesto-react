@@ -1,5 +1,5 @@
-function ImagePopup(props) {
-  const { card, onClose } = props;
+function ImagePopup({ card, onClose }) {
+  // const { card, onClose } = props;
 
   return (
         <div

@@ -15,7 +15,7 @@ function AvatarUpdate() {
         />
         <span className="popup__error" id="error-avatarUpdate"></span>
       </fieldset>
-      <fieldset className="form__handlers">
+      {/* <fieldset className="form__handlers">
         <button
           type="submit"
           name="sBtnAvatarUpdate"
@@ -30,7 +30,7 @@ function AvatarUpdate() {
         >
           Сохранение ...
         </button>
-      </fieldset>
+      </fieldset> */}
     </>
   );
 }

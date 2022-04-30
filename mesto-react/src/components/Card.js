@@ -1,5 +1,5 @@
-function Card(props) {
-  const { card, onCardClick } = props;
+function Card({ card, onCardClick }) {
+  // const { card, onCardClick } = props;
 
   function handleClick() {
     onCardClick(card);

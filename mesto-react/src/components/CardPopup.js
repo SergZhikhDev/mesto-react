@@ -27,7 +27,7 @@ function CardPopup(){
     <span className="popup__error" id="error-placeLink"></span>
   </fieldset>
 
-  <fieldset className="form__handlers">
+  {/* <fieldset className="form__handlers">
     <button
       type="submit"
       name="sBtnAddBlock"
@@ -43,7 +43,7 @@ function CardPopup(){
     >
       Сохранение ...
     </button>
-  </fieldset>
+  </fieldset> */}
 </>
   )
 }
