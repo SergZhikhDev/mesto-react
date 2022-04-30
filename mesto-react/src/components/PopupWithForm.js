@@ -1,5 +1,4 @@
 function PopupWithForm({ children, title, name, btnText, isOpen, onClose }) {
-  // const { children, title, name, btnText, isOpen, onClose } = props;
   return (
     <div
       className={`popup  ${isOpen && "popup_opened"} popup_type_${name}`}
@@ -13,6 +12,7 @@ function PopupWithForm({ children, title, name, btnText, isOpen, onClose }) {
         ></button>
         <h3 className="popup__heading">{`${title}`}</h3>
         <form name={`${name}`} className={`form form_type_${name}`} noValidate>
+          
           {children}
 
           <fieldset className="form__handlers">
@@ -36,4 +36,5 @@ function PopupWithForm({ children, title, name, btnText, isOpen, onClose }) {
     </div>
   );
 }
+
 export default PopupWithForm;

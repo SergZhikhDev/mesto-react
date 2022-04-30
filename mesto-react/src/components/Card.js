@@ -1,6 +1,5 @@
 function Card({ card, onCardClick }) {
-  // const { card, onCardClick } = props;
-
+  
   function handleClick() {
     onCardClick(card);
   }
@@ -25,4 +24,5 @@ function Card({ card, onCardClick }) {
     </li>
   );
 }
+
 export default Card;

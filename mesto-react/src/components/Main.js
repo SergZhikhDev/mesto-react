@@ -40,47 +40,44 @@ function Main(props) {
   }, []);
 
   return (
-    <>
-      {" "}
-      <main className="content">
-        <section className="profile">
-          <img
-            className="profile__avatar"
-            src={userAvatar}
-            alt="фотография пользователя"
-          />
+    <main className="content">
+      <section className="profile">
+        <img
+          className="profile__avatar"
+          src={userAvatar}
+          alt="фотография пользователя"
+        />
 
+        <button
+          type="button"
+          className="openPopupBtn  profile__avatar-button"
+          onClick={onEditAvatar}
+        ></button>
+
+        <div className="profile-info">
+          <h1 className="profile-info__userName">{userName}</h1>
           <button
             type="button"
-            className="openPopupBtn  profile__avatar-button"
-            onClick={onEditAvatar}
+            className="openPopupBtn profile-info__edit-button"
+            onClick={onEditProfile}
           ></button>
+          <p className="profile-info__about-self">{userDescription}</p>
+        </div>
+        <button
+          type="button"
+          className="openPopupBtn profile__add-button"
+          onClick={onAddPlace}
+        ></button>
+      </section>
 
-          <div className="profile-info">
-            <h1 className="profile-info__userName">{userName}</h1>
-            <button
-              type="button"
-              className="openPopupBtn profile-info__edit-button"
-              onClick={onEditProfile}
-            ></button>
-            <p className="profile-info__about-self">{userDescription}</p>
-          </div>
-          <button
-            type="button"
-            className="openPopupBtn profile__add-button"
-            onClick={onAddPlace}
-          ></button>
-        </section>
-
-        <section className="places">
-          <ul className="elements" id="elements">
-            {cards.map((card) => (
-              <Card key={card.id} card={card} onCardClick={onCardClick} />
-            ))}
-          </ul>
-        </section>
-      </main>
-    </>
+      <section className="places">
+        <ul className="elements" id="elements">
+          {cards.map((card) => (
+            <Card key={card.id} card={card} onCardClick={onCardClick} />
+          ))}
+        </ul>
+      </section>
+    </main>
   );
 }
 
