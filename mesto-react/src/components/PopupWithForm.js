@@ -10,9 +10,8 @@ function PopupWithForm({ children, title, name, btnText, isOpen, onClose }) {
           className="popup__close"
           onClick={onClose}
         ></button>
-        <h3 className="popup__heading">{`${title}`}</h3>
-        <form name={`${name}`} className={`form form_type_${name}`} noValidate>
-          
+        <h3 className="popup__heading">{title}</h3>
+        <form name={name} className={`form form_type_${name}`} noValidate>
           {children}
 
           <fieldset className="form__handlers">
@@ -21,7 +20,7 @@ function PopupWithForm({ children, title, name, btnText, isOpen, onClose }) {
               name="sBtnAvatarUpdate"
               className="form__button form__button_avatar-update"
             >
-              {`${btnText}`}
+              {btnText}
             </button>
             <button
               type="button"
