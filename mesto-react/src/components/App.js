@@ -109,7 +109,7 @@ function App() {
       .catch((err) => {
         console.log(`Ошибка: ${err}`);
       });
-  }, []);
+  }, [cards]);
 
   useEffect(() => {
     api.getProfile().then((res) => {
