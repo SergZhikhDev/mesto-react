@@ -24,7 +24,11 @@ class Api {
 
   }
 
-  editProfile(name, about) {
+
+
+
+
+  editProfile({name, about}) {
     return fetch(`${this._baseUrl}/users/me`, {
       method: "PATCH",
       headers: this._headers,
@@ -39,7 +43,7 @@ class Api {
 
   }
 
-  addCard(name, link) {
+  addCard({name, link}) {
     return fetch(`${this._baseUrl}/cards`, {
       method: "POST",
       headers: this._headers,
@@ -88,7 +92,7 @@ class Api {
 
   }
 
-  avatarUpdate(avatar) {
+  avatarUpdate({avatar}) {
     return fetch(`${this._baseUrl}/users/me/avatar`, {
       method: "PATCH",
       headers: this._headers,
@@ -100,7 +104,21 @@ class Api {
         res.ok ? res.json() : Promise.reject(`Ошибка: ${res.status}`)
       )
 
+
+      
+
   }
+
+  changeLikeCardStatus(id, isLiked) {
+    return isLiked ?
+    this.addlikeCard(id) :
+       this.deletelikeCard(id)
+}
+
+
+
+
+
 }
 
 export const api = new Api({
@@ -110,5 +128,8 @@ export const api = new Api({
     "Content-Type": "application/json",
   },
 });
+
+
+
 
 export default api;

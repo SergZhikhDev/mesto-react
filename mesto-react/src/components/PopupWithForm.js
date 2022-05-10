@@ -1,4 +1,4 @@
-function PopupWithForm({ children, title, name, btnText, isOpen, onClose }) {
+function PopupWithForm({ children, title, name, btnText, isOpen, onClose, onSubmit  }) {
   return (
     <div
       className={`popup  ${isOpen && "popup_opened"} popup_type_${name}`}
@@ -11,7 +11,10 @@ function PopupWithForm({ children, title, name, btnText, isOpen, onClose }) {
           onClick={onClose}
         ></button>
         <h3 className="popup__heading">{title}</h3>
-        <form name={name} className={`form form_type_${name}`} noValidate>
+        <form name={name}
+         className={`form form_type_${name}`}
+         onSubmit={onSubmit}
+          noValidate>
           {children}
 
           <fieldset className="form__handlers">
