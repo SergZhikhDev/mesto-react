@@ -44,77 +44,91 @@ function App() {
   }
 
   function handleUpdateUser({ name, about }) {
-    api.editProfile({ name, about }).then((res) => {
-      setCurrentUser(res);
-    });
-    closeAllPopups();
+    api
+      .editProfile({ name, about })
+      .then((res) => {
+        setCurrentUser(res);
+        closeAllPopups();
+      })
+      .catch((err) => {
+        console.log(`Ошибка: ${err}`);
+      });
   }
 
   function handleUpdateAvatar({ avatar }) {
-    api.avatarUpdate({ avatar }).then((res) => {
-      console.log("res", res);
-      setCurrentUser(res);
-    });
-    closeAllPopups();
+    api
+      .avatarUpdate({ avatar })
+      .then((res) => {
+        console.log("res", res);
+        setCurrentUser(res);
+        closeAllPopups();
+      })
+      .catch((err) => {
+        console.log(`Ошибка: ${err}`);
+      });
   }
 
   function handleAddPlace({ name, link }) {
-    api.addCard({ name, link }).then((newCard) => {
-      console.log("res", newCard);
-      setCards([newCard, ...cards]);
-    });
-    closeAllPopups();
+    api
+      .addCard({ name, link })
+      .then((newCard) => {
+        console.log("res", newCard);
+        setCards([newCard, ...cards]);
+        closeAllPopups();
+      })
+      .catch((err) => {
+        console.log(`Ошибка: ${err}`);
+      });
   }
 
   function handleCardLike(card) {
     let isLiked = card.likes.some((i) => i._id === currentUser._id);
 
     api
-      .changeLikeCardStatus(card.id, !isLiked)
+      .changeLikeCardStatus(card._id, !isLiked)
 
       .then((newCard) => {
         setCards((state) =>
-          state.map((c) => (c._id === card.id ? newCard : c))
+          state.map((c) => (c._id === card._id ? newCard : c))
         );
       })
-      .catch((err) => console.log("Не удалось изменить лайк:", err));
+      .catch((err) => {
+        console.log(`Ошибка: ${err}`);
+      });
   }
 
   function handleCardDelete(card) {
-    api.deleteCard(card.id).then(() => {
-      console.log(card);
-      setCards((state) => state.filter((item) => item._id !== card.id));
-    });
+    api
+      .deleteCard(card._id)
+      .then(() => {
+        setCards((state) => state.filter((item) => item._id !== card._id));
+      })
+      .catch((err) => {
+        console.log(`Ошибка: ${err}`);
+      });
   }
+
   useEffect(() => {
     api
       .getInitialCards()
-
-      .then((values) => {
-        const cardList = values;
-
-        const formatedData = cardList.map((cardData) => {
-          return {
-            likes: cardData.likes,
-            link: cardData.link,
-            name: cardData.name,
-            id: cardData._id,
-            owner: cardData.owner,
-          };
-        });
-
-        setCards(formatedData);
+      .then((res) => {
+        setCards(res);
       })
 
       .catch((err) => {
         console.log(`Ошибка: ${err}`);
       });
-  }, [cards]);
+  }, []);
 
   useEffect(() => {
-    api.getProfile().then((res) => {
-      setCurrentUser(res);
-    });
+    api
+      .getProfile()
+      .then((res) => {
+        setCurrentUser(res);
+      })
+      .catch((err) => {
+        console.log(`Ошибка: ${err}`);
+      });
   }, []);
 
   return (

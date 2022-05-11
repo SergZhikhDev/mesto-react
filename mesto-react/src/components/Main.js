@@ -49,7 +49,7 @@ function Main({
         <ul className="elements" id="elements">
           {cards.map((card) => (
             <Card
-              key={card.id}
+              key={card._id}
               card={card}
               onCardClick={onCardClick}
               onCardDelete={onCardDelete}

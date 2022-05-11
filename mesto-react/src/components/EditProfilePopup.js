@@ -10,7 +10,7 @@ function EditProfilePopup({ isOpen, onClose, onUpdateUser }) {
   React.useEffect(() => {
     setName(currentUser.name);
     setDescription(currentUser.about);
-  }, [currentUser]);
+  }, [currentUser, isOpen]);
 
   function handleNameChange(e) {
     setName(e.target.value);
@@ -20,7 +20,7 @@ function EditProfilePopup({ isOpen, onClose, onUpdateUser }) {
     setDescription(e.target.value);
   }
 
-  function handleSubmit(e) {
+  function handleEditSubmit(e) {
     e.preventDefault();
     onUpdateUser({
       name,
@@ -35,7 +35,7 @@ function EditProfilePopup({ isOpen, onClose, onUpdateUser }) {
       btnText=" Сохранить"
       isOpen={isOpen}
       onClose={onClose}
-     onSubmit={handleSubmit}
+     onSubmit={handleEditSubmit}
     >
       <fieldset className="form__input-container">
         <input
